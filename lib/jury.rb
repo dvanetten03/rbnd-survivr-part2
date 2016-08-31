@@ -1,7 +1,13 @@
 class Jury
-  def add_member(name)
+  attr_accessor :members
+
+  def initialize
+    @members = []
   end
 
-  def members
+  def add_member(member)
+    @members << member
   end
+
+  
 end
