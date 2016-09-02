@@ -10,18 +10,19 @@ class Jury
     @members << member
   end
 
-  def cast_votes(finalists)
-    votes = {
-      finalists[0] => 0,
-      finalists[1] => 0
-    }
-    members.each do |member|
-      vote = finalists.sample
-      puts vote
-      votes[vote] += 1
+  def cast_votes (finalists)
+    @finalists = Hash.new
+    finalists.each do |finalist|
+      @finalists[finalist] = 0
     end
-    return votes
-  end
+
+    @members.each do |member|
+      random = finalists.sample
+      puts "#{member} voted for #{random}"
+      @finalists[random] += 1
+    end
+    return @finalists
+end
 
   def report_votes(votes)
     votes.each do |finalist, votes|
